@@ -66,7 +66,7 @@ public class DLBasePluginService extends Service implements DLServicePlugin {
     public int onStartCommand(Intent intent, int flags, int startId) {
         // TODO Auto-generated method stub
         LOG.d(TAG, TAG + " onStartCommand");
-        return 0;
+        return Service.START_STICKY_COMPATIBILITY;
     }
 
     @Override

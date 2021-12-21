@@ -150,13 +150,17 @@ public class DLProxyFragmentActivity extends FragmentActivity implements DLAttac
 
     @Override
     public void onWindowAttributesChanged(LayoutParams params) {
-        mRemoteActivity.onWindowAttributesChanged(params);
+        if(mRemoteActivity != null) {
+            mRemoteActivity.onWindowAttributesChanged(params);
+        }
         super.onWindowAttributesChanged(params);
     }
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
-        mRemoteActivity.onWindowFocusChanged(hasFocus);
+        if(mRemoteActivity != null) {
+            mRemoteActivity.onWindowFocusChanged(hasFocus);
+        }
         super.onWindowFocusChanged(hasFocus);
     }
 

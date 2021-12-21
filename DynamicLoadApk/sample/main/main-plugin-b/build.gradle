@@ -1,12 +1,12 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 19
+    compileSdkVersion 29
     buildToolsVersion "19.1.0"
 
     defaultConfig {
         minSdkVersion 8
-        targetSdkVersion 19
+        targetSdkVersion 29
     }
 
     buildTypes {
@@ -33,12 +33,12 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    provided project(':lib')
-    provided files('../main-host/build/libs/main-host.jar')
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    compileOnly project(':lib')
+    compileOnly files('../main-host/build/libs/main-host.jar')
 }
 
-task beforeBuild(dependsOn: ':main-host:buildLib') << {
+task beforeBuild(dependsOn: ':main-host:makeReleaseJar') {
     println 'do it before build'
 }
 

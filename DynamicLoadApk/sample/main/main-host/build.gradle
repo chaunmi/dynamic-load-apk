@@ -1,12 +1,12 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 19
+    compileSdkVersion 29
     buildToolsVersion "19.1.0"
 
     defaultConfig {
         minSdkVersion 8
-        targetSdkVersion 19
+        targetSdkVersion 29
     }
 
     buildTypes {
@@ -33,25 +33,12 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile project(':lib')
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(':lib')
 }
 
-//def makeJar(String target,String classDir){
-//    exec{
-//        executable "jar"
-//        args "cvf",target
-//        args "-C", classDir
-//        args "","."
-//    }
-//}
-//
-//task buildLib(dependsOn:'compileReleaseJava') {
-//    def srcDir = "build/intermediates/classes/release"
-//    def destFile = "build/main-host.jar"
-//    inputs.dir srcDir
-//    outputs.file destFile
-//    doLast {
-//        makeJar(destFile, srcDir)
-//    }
-//}
+task makeReleaseJar(type: Jar, dependsOn: ['assembleRelease']){
+    archiveFileName = 'main-host.jar'
+    from ('build/intermediates/javac/release/classes')
+    destinationDirectory = file('build/libs')
+}
