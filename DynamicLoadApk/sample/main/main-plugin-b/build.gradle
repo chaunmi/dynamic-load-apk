@@ -38,7 +38,7 @@ dependencies {
     compileOnly files('../main-host/build/libs/main-host.jar')
 }
 
-task beforeBuild(dependsOn: ':main-host:makeReleaseJar') {
+task beforeBuild(dependsOn: ':main-host:buildLibReleaseJar') {
     println 'do it before build'
 }
 

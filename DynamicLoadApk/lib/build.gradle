@@ -40,13 +40,13 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 }
 
-task makeDebugJar(type: Jar, dependsOn: ['assembleDebug']){
+task buildLibDebugJar(type: Jar, dependsOn: ['assembleDebug']){
     archiveFileName = 'dl-lib-debug.jar'
     from ('build/intermediates/javac/debug/classes')
     destinationDirectory = file('build/libs')
 }
 
-task makeReleaseJar(type: Jar, dependsOn: ['assembleRelease']){
+task buildLibReleaseJar(type: Jar, dependsOn: ['assembleRelease']){
     archiveFileName = 'dl-lib-release.jar'
     from ('build/intermediates/javac/release/classes')
     destinationDirectory = file('build/libs')

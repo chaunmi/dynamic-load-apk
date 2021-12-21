@@ -1,12 +1,12 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 19
+    compileSdkVersion 29
     buildToolsVersion "19.1.0"
 
     defaultConfig {
         minSdkVersion 8
-        targetSdkVersion 18
+        targetSdkVersion 29
     }
 
     buildTypes {
@@ -33,5 +33,17 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compileOnly fileTree(dir: 'libs', include: ['*.jar'])
+}
+
+task buildLibDebugJar(type: Jar, dependsOn: ['assembleDebug']){
+    archiveFileName = 'doi-common-lib-debug.jar'
+    from ('build/intermediates/javac/debug/classes')
+    destinationDirectory = file('build/libs')
+}
+
+task buildLibReleaseJar(type: Jar, dependsOn: ['assembleRelease']){
+    archiveFileName = 'doi-common-lib-release.jar'
+    from ('build/intermediates/javac/release/classes')
+    destinationDirectory = file('build/libs')
 }

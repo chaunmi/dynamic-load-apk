@@ -37,7 +37,7 @@ dependencies {
     compileOnly files('external-jars/android-support-v4.jar')
 }
 
-task beforeBuild(dependsOn: ':lib:makeDebugJar') {
+task beforeBuild(dependsOn: ':lib:buildLibDebugJar') {
 
 }
 

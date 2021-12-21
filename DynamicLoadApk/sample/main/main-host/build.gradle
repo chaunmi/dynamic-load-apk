@@ -37,7 +37,7 @@ dependencies {
     implementation project(':lib')
 }
 
-task makeReleaseJar(type: Jar, dependsOn: ['assembleRelease']){
+task buildLibReleaseJar(type: Jar, dependsOn: ['assembleRelease']){
     archiveFileName = 'main-host.jar'
     from ('build/intermediates/javac/release/classes')
     destinationDirectory = file('build/libs')
