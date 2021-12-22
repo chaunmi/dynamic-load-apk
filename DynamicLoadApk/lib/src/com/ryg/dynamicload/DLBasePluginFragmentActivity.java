@@ -17,6 +17,7 @@
  */
 package com.ryg.dynamicload;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -24,9 +25,9 @@ import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.LoaderManager;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.loader.app.LoaderManager;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -62,6 +63,7 @@ public class DLBasePluginFragmentActivity extends FragmentActivity implements DL
     protected DLPluginManager mPluginManager;
     protected DLPluginPackage mPluginPackage;
 
+    @SuppressLint("LongLogTag")
     @Override
     public void attach(Activity proxyActivity, DLPluginPackage pluginPackage) {
         Log.d(TAG, "attach: proxyActivity= " + proxyActivity);
@@ -70,6 +72,7 @@ public class DLBasePluginFragmentActivity extends FragmentActivity implements DL
         mPluginPackage = pluginPackage;
     }
 
+    @SuppressLint("LongLogTag")
     @Override
     public void onCreate(Bundle savedInstanceState) {
         if (savedInstanceState != null) {

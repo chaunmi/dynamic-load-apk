@@ -5,7 +5,7 @@ android {
     buildToolsVersion "19.1.0"
 
     defaultConfig {
-        minSdkVersion 8
+        minSdkVersion 14
         targetSdkVersion 29
     }
 
@@ -35,7 +35,6 @@ android {
 dependencies {
     compileOnly files('../../../lib/build/libs/dl-lib-debug.jar')
     compileOnly files('../doi-common/build/libs/doi-common-lib-debug.jar')
-    compileOnly files('external-jars/android-support-v4.jar')
 }
 
 task beforeBuild(dependsOn: [':doi-common:buildLibDebugJar', ':lib:buildLibDebugJar']) {
